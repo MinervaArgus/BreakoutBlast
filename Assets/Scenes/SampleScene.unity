@@ -440,8 +440,8 @@ GameObject:
   - component: {fileID: 724524483}
   - component: {fileID: 724524482}
   m_Layer: 0
-  m_Name: BouncingBar
-  m_TagString: Untagged
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537,6 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  bounceForce: 10
 --- !u!54 &724524483
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -551,8 +552,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
+  m_Constraints: 112
+  m_CollisionDetection: 1
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +616,7 @@ GameObject:
   - component: {fileID: 1439401583}
   - component: {fileID: 1439401582}
   - component: {fileID: 1439401586}
+  - component: {fileID: 1439401587}
   m_Layer: 0
   m_Name: MainBall
   m_TagString: Untagged
@@ -715,7 +717,20 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &1439401587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439401581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ee14bb8a2a1816498221cbd6233cbff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1001 &1985311710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -782,6 +797,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Brick1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430036152191402917, guid: 9b6282d595971d1449b83da832b40d8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6282d595971d1449b83da832b40d8c, type: 3}

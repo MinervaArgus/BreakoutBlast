@@ -11,7 +11,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f; // player's movement speed
-
+    public float bounceForce = 10f;
     private Rigidbody rb; // Ridgidbody connector
     private Camera mainCamera; // Camera connector
 
@@ -36,4 +36,22 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, screenLeftEdge, screenRightEdge), transform.position.y, transform.position.z);
         }
     }
+    /*
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            Rigidbody ballRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+
+            // Calculate the bounce direction
+            Vector3 bounceDirection = (collision.transform.position - transform.position).normalized;
+
+            // Ensure the ball always moves upward
+            bounceDirection.y = Mathf.Abs(bounceDirection.y);
+
+            // Apply the bounce force
+            ballRigidbody.velocity = bounceDirection * bounceForce;
+        }
+    }
+    */
 }
