@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 25f;
     private Rigidbody rb;
     private Vector3 screenBounds;
     private Camera mainCamera;
@@ -76,13 +76,13 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Brick"))
         {
             // Calculate the reflection direction based on the platform's normal and ball's velocity
-            Vector3 newDirection = Vector3.Reflect(rb.velocity, Vector3.up);
+            Vector3 newDirection = Vector3.Reflect(rb.velocity, collision.contacts[0].normal);
 
             // Add some force to ensure ball actually bounces off player
-            newDirection += Vector3.up * 0.5f;
+            newDirection += Vector3.up * 10f;
 
             //Ensure the ball is launched upward
             if (newDirection.y < 0)

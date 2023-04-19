@@ -31,8 +31,8 @@ public class Player : MonoBehaviour
         if (mainCamera != null)
         {
             float halfPlayerWidth = transform.localScale.x / 2f;
-            float screenLeftEdge = mainCamera.ScreenToWorldPoint(new Vector3(0f, 0f, 0f)).x + halfPlayerWidth;
-            float screenRightEdge = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, 0f, 0f)).x - halfPlayerWidth;
+            float screenLeftEdge = mainCamera.ScreenToWorldPoint(new Vector3(0f, 0f, -mainCamera.transform.position.z)).x + halfPlayerWidth;
+            float screenRightEdge = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, 0f, -mainCamera.transform.position.z)).x - halfPlayerWidth;
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, screenLeftEdge, screenRightEdge), transform.position.y, transform.position.z);
         }
     }
