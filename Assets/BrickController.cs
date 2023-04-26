@@ -6,9 +6,11 @@ public class BrickController : MonoBehaviour
 {
     public int maxHits = 1;
     private int currentHits;
+    private HUDManager hudManager;
 
     void Start()
     {
+        hudManager = FindObjectOfType<HUDManager>();
         currentHits = 0;
     }
 
@@ -35,6 +37,7 @@ public class BrickController : MonoBehaviour
 
             if (currentHits >= maxHits)
             {
+                hudManager.IncreaseScore(1);
                 Destroy(gameObject);
             }
         }

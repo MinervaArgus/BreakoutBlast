@@ -8,6 +8,7 @@ public class BallController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 screenBounds;
     private Camera mainCamera;
+    public HUDManager hudManager;
 
     private void Start()
     {
@@ -55,7 +56,7 @@ public class BallController : MonoBehaviour
         if (ballPosition.y <= 0)
         {
             // Player loses, reset the game or implement other game over logic
-            ResetBall();
+            hudManager.GameOver();
         }
     }
 

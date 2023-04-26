@@ -1,18 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject startScreen;
+    public GameObject gameHUD;
+    public GameObject gameOverScreen;
+    public TMP_Text scoreText;
+
+    private int score;
+
+    private void Start()
     {
-        
+        gameHUD.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void GameOver()
     {
-        
+        gameHUD.SetActive(false);
+        gameOverScreen.SetActive(true);
+    }
+
+    public void IncreaseScore(int points)
+    {
+        score += points;
+        UpdateScoreText();
+    }
+
+    private void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + (score);
     }
 }
