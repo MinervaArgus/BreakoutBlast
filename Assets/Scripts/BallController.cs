@@ -16,6 +16,7 @@ public class BallController : MonoBehaviour
 
     private void Start()
     {
+        hudManager = FindObjectOfType<HUDManager>();
         rb = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
         screenBounds = GetScreenBounds();
@@ -76,7 +77,7 @@ public class BallController : MonoBehaviour
 
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                dbCmd.CommandText = "UPDATE PlayerScores SET Score = @Score WHERE PlayerName = @PlayerName";
+                dbCmd.CommandText = "UPDATE HighScores SET Score = @Score WHERE PlayerName = @PlayerName";
 
                 IDbDataParameter scoreParam = dbCmd.CreateParameter();
                 scoreParam.ParameterName = "@Score";
