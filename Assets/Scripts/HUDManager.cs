@@ -37,8 +37,9 @@ public class HUDManager : MonoBehaviour
 
     public int GetScore()
     {
+        string scoreStr = scoreText.text.Replace("Score: ", "").Trim();
         int score;
-        if (int.TryParse(scoreText.text, out score))
+        if (int.TryParse(scoreStr, out score))
         {
             return score;
         }

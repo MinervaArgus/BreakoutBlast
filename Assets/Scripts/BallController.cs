@@ -7,7 +7,7 @@ using Mono.Data.Sqlite;
 
 public class BallController : MonoBehaviour
 {
-    public float speed = 25f;
+    public float speed = 80f;
     private Rigidbody rb;
     private Vector3 screenBounds;
     private Camera mainCamera;

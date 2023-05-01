@@ -20,7 +20,9 @@ public class SQLiteManager : MonoBehaviour
         dbConnection.Open();
 
         IDbCommand dbCommandCreateTable = dbConnection.CreateCommand();
-        dbCommandCreateTable.CommandText = "CREATE TABLE IF NOT EXISTS HighScores ( ID INTEGER PRIMARY KEY AUTOINCREMENT, PlayerName TEXT NOT NULL, Score INTEGER NOT NULL)";
+        dbCommandCreateTable.CommandText = "DROP TABLE HighScores";
+        dbCommandCreateTable.ExecuteNonQuery();
+        dbCommandCreateTable.CommandText = "CREATE TABLE IF NOT EXISTS HighScores ( ID INTEGER PRIMARY KEY AUTOINCREMENT, PlayerName TEXT NOT NULL, Difficulty TEXT NOT NULL, Score INTEGER NOT NULL)";
         dbCommandCreateTable.ExecuteNonQuery();
 
         return dbConnection;

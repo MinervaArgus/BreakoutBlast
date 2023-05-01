@@ -29,7 +29,7 @@ public class PlayerInputManager : MonoBehaviour
             PlayerPrefs.Save();
 
             SavePlayerName(playerName);
-            SceneManager.LoadScene("Easy");
+            SceneManager.LoadScene("SpeedSelection");
         }
     }
 
