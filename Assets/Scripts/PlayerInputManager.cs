@@ -20,10 +20,10 @@ public class PlayerInputManager : MonoBehaviour
         submitButton.onClick.AddListener(SubmitName);
     }
 
-    public void SubmitName()
+    private void SubmitName()
     {
         string playerName = playerNameInput.text;
-        if (!string.IsNullOrEmpty(playerName))
+        if (string.IsNullOrEmpty(playerName))
         {
             PlayerPrefs.SetString("PlayerName", playerName);
             PlayerPrefs.Save();
@@ -41,7 +41,7 @@ public class PlayerInputManager : MonoBehaviour
 
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                dbCmd.CommandText = "INSERT INTO HighScores (PlayerName, Score) VALUES (@PlayerName, 0)";
+                dbCmd.CommandText = "INSERT INTO PlayerScores (PlayerName, Score) VALUES (@PlayerName, 0)";
 
                 IDbDataParameter playerNameParam = dbCmd.CreateParameter();
                 playerNameParam.ParameterName = "@PlayerName";
