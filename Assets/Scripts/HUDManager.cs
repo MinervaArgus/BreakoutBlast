@@ -34,4 +34,18 @@ public class HUDManager : MonoBehaviour
     {
         scoreText.text = "Score: " + (score);
     }
+
+    public int GetScore()
+    {
+        int score;
+        if (int.TryParse(scoreText.text, out score))
+        {
+            return score;
+        }
+        else
+        {
+            Debug.LogError("Failed to parse score text");
+            return 0;
+        }
+    }
 }

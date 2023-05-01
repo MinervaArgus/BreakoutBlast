@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Data;
 using UnityEngine.SceneManagement;
+using Mono.Data.Sqlite;
 
 public class BallController : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class BallController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 screenBounds;
     private Camera mainCamera;
+    private HUDManager hudManager;
+    private string connectionString = "URI=file:HighScores.db";
 
     private void Start()
     {
@@ -55,9 +59,46 @@ public class BallController : MonoBehaviour
 
         if (ballPosition.y <= 0)
         {
+            int playerScore = hudManager.GetScore();
+            string playerName = GetPlayerName();
+            UpdateHighScore(playerScore, playerName);
             // Player loses, reset the game or implement other game over logic
             SceneManager.LoadScene("GameOver");
         }
+    }
+
+    // Save score to DB
+    private void UpdateHighScore(int newScore, string playerName)
+    {
+        using (IDbConnection dbConnection = new SqliteConnection(connectionString))
+        {
+            dbConnection.Open();
+
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                dbCmd.CommandText = "UPDATE PlayerScores SET Score = @Score WHERE PlayerName = @PlayerName";
+
+                IDbDataParameter scoreParam = dbCmd.CreateParameter();
+                scoreParam.ParameterName = "@Score";
+                scoreParam.Value = newScore;
+                dbCmd.Parameters.Add(scoreParam);
+
+                IDbDataParameter playerNameParam = dbCmd.CreateParameter();
+                playerNameParam.ParameterName = "@PlayerName";
+                playerNameParam.Value = playerName;
+                dbCmd.Parameters.Add(playerNameParam);
+
+                dbCmd.ExecuteNonQuery();
+            }
+
+            dbConnection.Close();
+        }
+    }
+
+    //Get player name from PlayerPrefs
+    private string GetPlayerName()
+    {
+        return PlayerPrefs.GetString("PlayerName", "Unknown");
     }
 
     private void ResetBall()

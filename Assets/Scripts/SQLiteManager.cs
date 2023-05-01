@@ -6,7 +6,6 @@ using Mono.Data.Sqlite;
 
 public class SQLiteManager : MonoBehaviour
 {
-    private string dbUri = "URI=file:HighScores.db";
 
     void Start()
     {
@@ -21,7 +20,7 @@ public class SQLiteManager : MonoBehaviour
         dbConnection.Open();
 
         IDbCommand dbCommandCreateTable = dbConnection.CreateCommand();
-        dbCommandCreateTable.CommandText = "CREATE TABLE IF NOT EXISTS HighScores ( name VARCHAR(20), score INTEGER )";
+        dbCommandCreateTable.CommandText = "CREATE TABLE IF NOT EXISTS HighScores ( ID INTEGER PRIMARY KEY AUTOINCREMENT, PlayerName TEXT NOT NULL, Score INTEGER NOT NULL)";
         dbCommandCreateTable.ExecuteNonQuery();
 
         return dbConnection;
