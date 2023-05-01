@@ -11,7 +11,7 @@ public class BallController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 screenBounds;
     private Camera mainCamera;
-    private HUDManager hudManager;
+    public HUDManager hudManager;
     private string connectionString = "URI=file:HighScores.db";
 
     private void Start()
