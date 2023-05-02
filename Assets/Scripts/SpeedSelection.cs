@@ -29,6 +29,7 @@ public class SpeedSelection : MonoBehaviour
     private void UpdateDifficulty(string difficulty)
     {
         string connectionString = "URI=file:HighScores.db";
+        string playerName = PlayerPrefs.GetString("PlayerName", "");
         using (IDbConnection dbConnection = new SqliteConnection(connectionString))
         {
             dbConnection.Open();
@@ -37,19 +38,31 @@ public class SpeedSelection : MonoBehaviour
             {
                 if (difficulty.Equals("Easy"))
                 {
-                    dbCmd.CommandText = "INSERT INTO HighScores (Difficulty) VALUES (Easy)";
+                    dbCmd.CommandText = "INSERT INTO HighScores (PlayerName, Difficulty, Score) VALUES (@PlayerName, 'Easy', 0)";
+                    IDbDataParameter playerNameParam = dbCmd.CreateParameter();
+                    playerNameParam.ParameterName = "@PlayerName";
+                    playerNameParam.Value = playerName;
+                    dbCmd.Parameters.Add(playerNameParam);
 
                     dbCmd.ExecuteNonQuery();
                 }
                 else if (difficulty.Equals("Medium"))
                 {
-                    dbCmd.CommandText = "INSERT INTO HighScores (Difficulty) VALUES (Medium)";
+                    dbCmd.CommandText = "INSERT INTO HighScores (PlayerName, Difficulty, Score) VALUES (@PlayerName, 'Medium', 0)";
+                    IDbDataParameter playerNameParam = dbCmd.CreateParameter();
+                    playerNameParam.ParameterName = "@PlayerName";
+                    playerNameParam.Value = playerName;
+                    dbCmd.Parameters.Add(playerNameParam);
 
                     dbCmd.ExecuteNonQuery();
                 }
                 else if (difficulty.Equals("Hard"))
                 {
-                    dbCmd.CommandText = "INSERT INTO HighScores (Difficulty) VALUES (Hard)";
+                    dbCmd.CommandText = "INSERT INTO HighScores (PlayerName, Difficulty, Score) VALUES (@PlayerName, 'Hard', 0)";
+                    IDbDataParameter playerNameParam = dbCmd.CreateParameter();
+                    playerNameParam.ParameterName = "@PlayerName";
+                    playerNameParam.Value = playerName;
+                    dbCmd.Parameters.Add(playerNameParam);
 
                     dbCmd.ExecuteNonQuery();
                 }

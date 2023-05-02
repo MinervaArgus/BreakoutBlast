@@ -41,7 +41,7 @@ public class PlayerInputManager : MonoBehaviour
 
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                dbCmd.CommandText = "INSERT INTO HighScores (PlayerName, Score) VALUES (@PlayerName, 0)";
+                dbCmd.CommandText = "INSERT INTO HighScores (PlayerName, Difficulty, Score) VALUES (@PlayerName, 'Easy', 0)";
 
                 IDbDataParameter playerNameParam = dbCmd.CreateParameter();
                 playerNameParam.ParameterName = "@PlayerName";
