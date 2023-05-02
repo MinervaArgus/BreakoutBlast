@@ -7,6 +7,11 @@ using Mono.Data.Sqlite;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+/*
+ * Jackson Nevins
+ * PlayerInputManager.cs
+ * Controls the Scene that asks for the user's name, and saves it to the DB
+ */
 public class PlayerInputManager : MonoBehaviour
 {
     public TMP_InputField playerNameInput;

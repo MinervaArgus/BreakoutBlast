@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Jackson Nevins
+ * BrickController.cs
+ * Controls the functionality of the Brick prefab in Unity
+ */
 public class BrickController : MonoBehaviour
 {
     public int maxHits = 1;

@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using Mono.Data.Sqlite;
 
+/*
+ * Jackson Nevins
+ * SQLiteManager.cs
+ * Controls the functionality of the DB (i.e. connecting and opening the db)
+ */
 public class SQLiteManager : MonoBehaviour
 {
 

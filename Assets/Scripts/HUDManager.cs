@@ -3,6 +3,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
+/*
+ * Jackson Nevins
+ * HUDManager.cs
+ * Controls the Heads Up Display while the game is being played
+ */
+
 public class HUDManager : MonoBehaviour
 {
     public GameObject startScreen;

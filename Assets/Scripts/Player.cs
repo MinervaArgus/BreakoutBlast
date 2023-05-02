@@ -1,13 +1,12 @@
-/*
- * BreakoutBlast by Jackson Nevins
- * Remake of Brick breaker with 3d assets and a locked camera perspective. Connects to MariaDB to keep track of scores and who obtained the score.
- * 
- */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Jackson Nevins
+ * Player.cs
+ * Controls the functionality of the player (the moving bar)
+ */
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f; // player's movement speed

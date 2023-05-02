@@ -7,6 +7,11 @@ using UnityEngine.SceneManagement;
 using Mono.Data.Sqlite;
 using TMPro;
 
+/*
+ * Jackson Nevins
+ * SpeedSelection.cs
+ * Controls the Scene that asks what difficulty the user wants
+ */
 public class SpeedSelection : MonoBehaviour
 {
     public Button easyBtn;
